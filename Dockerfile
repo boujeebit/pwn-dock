@@ -21,3 +21,4 @@ RUN curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/conf
 RUN curl -sSL https://raw.githubusercontent.com/mhefley/pwn-dock/master/metasploit/scripts/bashrc.sh --output /root/.bashrc
 
 WORKDIR /
+RUN curl -sSL  https://raw.githubusercontent.com/mhefley/pwn-dock/master/scripts/msfdb.sh --output /etc/init.d/msfdb.sh
