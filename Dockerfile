@@ -18,7 +18,12 @@ RUN pip install flask virtualenv pwntools pycrypto angr
 WORKDIR /tmp/msf/
 RUN curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 
-RUN curl -sSL https://raw.githubusercontent.com/mhefley/pwn-dock/master/metasploit/scripts/bashrc.sh --output /root/.bashrc
+#RUN curl -sSL https://raw.githubusercontent.com/mhefley/pwn-dock/master/metasploit/scripts/bashrc.sh --output /root/.bashrc
 
 WORKDIR /
 RUN curl -sSL  https://raw.githubusercontent.com/mhefley/pwn-dock/master/scripts/msfdb.sh --output /etc/init.d/msfdb.sh
+RUN chmod a+x /etc/init.d/msfdb.sh
+
+
+
+#ENTRYPOINT ./etc/init.d/msfdb.sh || /bin/bash
