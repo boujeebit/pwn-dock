@@ -5,7 +5,10 @@
 # Description: Wrapper for msfconsole to start the database upon command
 # execution.
 #
-# PATH:
+# PATH: /root/bin
+#
+# TODO: Error check creation of db
+# TODO: Add message when creating database
 # ------------------------------------------------------------------------------
 
 service postgresql start
@@ -30,7 +33,7 @@ elif [ ! -f /root/.msf4/database.yml ]; then
     cp /var/lib/postgresql/.msf4/database.yml /root/.msf4/database.yml
 fi
 
-printf "\r[ {GREEN}ok{NC} ] Starting MSF database"
+printf "\r[ ${GREEN}ok${NC} ] Starting MSF database"
 
 echo
 

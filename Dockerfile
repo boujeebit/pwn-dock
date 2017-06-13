@@ -19,6 +19,8 @@ RUN curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/conf
         msfinstall && chmod 755 msfinstall && ./msfinstall
 
 #Overwrite msfconsole to hit wrapper first
-RUN curl -sSL  https://raw.githubusercontent.com/mhefley/pwn-dock/master/scripts/bash_profile --output /root/.bash_profile
+RUN curl -sSL  https://raw.githubusercontent.com/mhefley/pwn-dock/master/scripts/bashrc --output /root/.bashrc
 RUN mkdir /root/bin
 RUN curl -sSL  https://raw.githubusercontent.com/mhefley/pwn-dock/master/wappers/msfconsole --output /root/bin/msfconsole && chmod a+x /root/bin/msfconsole
+
+WORKDIR /
