@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# ------------------------------------------------------------------------------
+# Author: Mickey Hefley
+# Description: Wrapper for msfconsole to start the database upon command
+# execution.
+#
+# PATH:
+# ------------------------------------------------------------------------------
+
+service postgresql start
+
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+printf "\r[ .. ] Starting MSF database"
+
+
+#If the database.yml file is not found create the database else have msf init it.
+if [ ! -f /var/lib/postgresql/.msf4/database.yml ]; then
+    su -c "mkdir /var/lib/postgresql/.msf4 && createuser msf && createdb --owner=msf msf && msfdb init" postgres > /dev/null
+else
+    su -c "msfdb init" postgres > /dev/null
+fi
+
+if [ ! -d /root/.msf4 ]; then
+    mkdir /root/.msf4
+    cp /var/lib/postgresql/.msf4/database.yml /root/.msf4/database.yml
+elif [ ! -f /root/.msf4/database.yml ]; then
+    cp /var/lib/postgresql/.msf4/database.yml /root/.msf4/database.yml
+fi
+
+printf "\r[ {GREEN}ok{NC} ] Starting MSF database"
+
+echo
+
+/usr/bin/msfconsole

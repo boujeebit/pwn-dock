@@ -11,8 +11,7 @@ fi
 
 if [ ! -d /root/.msf4 ]; then
     mkdir /root/.msf4
-fi
-
-if [ ! -f /root/.msf4/database.yml ]; then
-  cp /var/lib/postgresql/.msf4/database.yml /root/.msf4/database.yml
+    cp /var/lib/postgresql/.msf4/database.yml /root/.msf4/database.yml
+elif [ ! -f /root/.msf4/database.yml ]; then
+    cp /var/lib/postgresql/.msf4/database.yml /root/.msf4/database.yml
 fi
