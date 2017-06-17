@@ -9,6 +9,7 @@
 #
 # TODO: Error check creation of db
 # TODO: Add message when creating database
+# TODO: Check status of postgres and database before a force start
 # ------------------------------------------------------------------------------
 
 service postgresql start

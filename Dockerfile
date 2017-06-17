@@ -24,3 +24,7 @@ RUN mkdir /root/bin
 RUN curl -sSL  https://raw.githubusercontent.com/mhefley/pwn-dock/master/wappers/msfconsole --output /root/bin/msfconsole && chmod a+x /root/bin/msfconsole
 
 WORKDIR /
+
+#Bring in IDA Remote debugger
+RUN mkdir /root/ida
+RUN curl -sSL  https://raw.githubusercontent.com/mhefley/pwn-dock/master/addons/linux-server --output /root/ida/linux-server
